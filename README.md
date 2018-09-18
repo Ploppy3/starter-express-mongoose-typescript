@@ -63,7 +63,11 @@ Initiate the logger once in `index.ts`
 
 log() warn() error()
 
-`logger.log('a','b','c')``logger.warn('a','b','c')``logger.error('a','b','c')`
+``` Typescript
+logger.log('a','b','c')
+logger.warn('a','b','c')
+logger.error('a','b','c')
+```
 
 ### Best practices
 
