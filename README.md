@@ -8,9 +8,11 @@ Dependencies are limited to strict minimum.
 
 Gulp takes care of recompiling and restarting the server on file change:
 
-`yarn serve` || `npm run serve`
+In developement: `yarn serve` || `npm run serve`
 
-Start in prod:
+---
+
+Start the production server (you must build for production before your serve for production)
 
 `yarn build-prod` || `npm run build-prod`
 
@@ -47,13 +49,13 @@ A custom router is used to redirect HTTP requests to the controllers.
 
 We tell a controller to listen to an URL.
 
-`router.listen('/projects', new ControllerOK());`
+`router.listen('/tell-me-ok', new ControllerOK());`
 
 ### Logger
 
 The `logger` object is used to log colorful text in the console as well as creating a log file when in production mode.
 
-Initiate the logger once in index.ts
+Initiate the logger once in `index.ts`
 
 `logger.init()`
 
