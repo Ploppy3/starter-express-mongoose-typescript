@@ -1,4 +1,4 @@
-# Starte Nodejs-Express-Mongoose with Typescript
+# Starter Nodejs-Express-Mongoose with Typescript
 
 This project is a starter for Nodejs-Express-Mongoose with Typescript.
 
