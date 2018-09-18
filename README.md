@@ -22,7 +22,7 @@ Start the production server (you must build for production before your serve for
 
 ### Controller
 
-Controllers are the core of the system. A controller can listen to http methods (get, post, put and delete) on a given URLs.
+Controllers are the core of the system. A controller can listen to HTTP methods (GET, POST, PUT, DELETE) on a given URL.
 
 A controller extends the Controller class.
 
@@ -43,13 +43,15 @@ export class ControllerOK extends Controller {
 
 ### Router
 
-`const router = new RestRouter();`
-
 A custom router is used to redirect HTTP requests to the controllers.
 
-We tell a controller to listen to an URL.
+In `index.ts`
 
-`router.listen('/tell-me-ok', new ControllerOK());`
+`const router = new RestRouter();`
+
+In order to bind a Controller to an URL.
+
+`router.bind('/tell-me-ok', new ControllerOK());`
 
 ### Logger
 

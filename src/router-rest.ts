@@ -11,7 +11,7 @@ export class RestRouter {
     this.upload = upload;
   }
 
-  listen(path: string, controller: Controller) {
+  bind(path: string, controller: Controller) {
 
     this.app.all(path, this.upload.array(), function (req, res, next) {
 

@@ -25,8 +25,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // ------------------------------------------------------------
 const router = new RestRouter(app, upload);
-router.listen('/projects/:id', new ControllerProject());
-router.listen('/projects', new ControllerProjects());
+router.bind('/projects/:id', new ControllerProject());
+router.bind('/projects', new ControllerProjects());
 // ------------------------------------------------------------
 app.all('*', function (req, res) {
   res.status(404).json('not found');
