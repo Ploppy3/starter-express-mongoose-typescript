@@ -18,22 +18,49 @@ Start in prod:
 
 ## Usage
 
-We use a custom router and controllers to respond to http methods.
+### Controller
 
-First we create a router (in `src/index.ts`):
+Controllers are the core of the system. A controller can listen to http methods (get, post, put and delete) on a given URLs.
+
+A controller extends the Controller class.
+
+A simple controller which returns 'ok' when called with the HTTP GET method looks like this:
+
+``` Typescript
+export class ControllerOK extends Controller {
+
+  constructor() {
+    super();
+  }
+
+  get() {
+    this.res.send('ok');
+  }
+}
+```
+
+### Router
 
 `const router = new RestRouter();`
 
-Second, we tell a controller to listen to an url.
+A custom router is used to redirect HTTP requests to the controllers.
 
-`router.listen('/projects', new ControllerProjects());`
+We tell a controller to listen to an URL.
 
-Controllers are the core of the system. A controller can listen to http methods (get, post, put and delete).
+`router.listen('/projects', new ControllerOK());`
 
-Define controllers in the `controllers` directory by creating a `.ts` file.
-Controllers should inherit (`extends`) from the `Controller` class.
-Within your controller, declare lowercase http methods functions in order to listen to specific http methods.
+### Logger
 
-In the `index.ts` file, use the custom router to listen to desired endpoints.
+The `logger` object is used to log colorful text in the console as well as creating a log file when in production mode.
+
+Initiate the logger once in index.ts
+
+`logger.init()`
+
+log() warn() error()
+
+`logger.log('a','b','c')``logger.warn('a','b','c')``logger.error('a','b','c')`
+
+### Best practices
 
 Mongoose models and their respective schemas should be put in the `src/models` directory (each pair in a single file).
