@@ -7,19 +7,25 @@ Dependencies are limited to strict minimum.
 ## Getting started
 
 Gulp takes care of recompiling and restarting the server on file change:
-`yarn gulp` || `npm run gulp`
 
-You can also just run the server:
 `yarn serve` || `npm run serve`
+
+Start in prod:
+
+`yarn build-prod` || `npm run build-prod`
+
+`yarn serve-prod` || `npm run serve-prod`
 
 ## Usage
 
 We use a custom router and controllers to respond to http methods.
 
 First we create a router (in `src/index.ts`):
+
 `const router = new RestRouter();`
 
 Second, we tell a controller to listen to an url.
+
 `router.listen('/projects', new ControllerProjects());`
 
 Controllers are the core of the system. A controller can listen to http methods (get, post, put and delete).

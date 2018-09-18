@@ -4,18 +4,20 @@ var del = require('del');
 var typescript = require("gulp-typescript");
 var typescriptProject = typescript.createProject("tsconfig.json");
 var spawn = require('child_process').spawn;
+var uglify = require('gulp-uglify');
+var pump = require('pump');
 
 var instance;
 
-gulp.task('default', ['cleanup', 'compile', 'serve'], function () {
-  gulp.watch('src/**/*.ts', ['compile', 'serve']);
+gulp.task('watch', ['cleanup', 'build', 'serve'], function () {
+  gulp.watch('src/**/*.ts', ['build', 'serve']);
 });
 
 gulp.task('cleanup', function () {
   return del(['dist/*']);
 });
 
-gulp.task('compile', ['cleanup'], function () {
+gulp.task('build', ['cleanup'], function () {
   return typescriptProject.src()
     .pipe(typescriptProject())
     .on('error', function () { console.log('typescript compiler crashed') })
@@ -23,11 +25,19 @@ gulp.task('compile', ['cleanup'], function () {
     .pipe(gulp.dest("dist"));
 });
 
-//*
-gulp.task('serve', ['compile'], function () {
+gulp.task('serve', ['build'], function () {
   if (instance) {
     instance.kill();
   }
   return instance = spawn('node', ['dist/index.js'], { stdio: 'inherit' });
 });
-//*/
+
+gulp.task('compress', ['cleanup', 'build'], function (cb) {
+  return pump([
+    gulp.src('dist/**/*.js'),
+    uglify(),
+    gulp.dest('dist')
+  ],
+    cb
+  );
+});
