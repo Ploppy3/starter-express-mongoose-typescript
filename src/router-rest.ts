@@ -1,12 +1,13 @@
 import { Application } from "express";
 import { Controller } from "./controller";
+import multer = require('multer');
 
 export class RestRouter {
 
   private app: Application
   private upload: any;
 
-  constructor(app: Application, upload) {
+  constructor(app: Application, upload: multer.Instance) {
     this.app = app;
     this.upload = upload;
   }
