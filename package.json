@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "gulp watch",
+    "serve-tsc": "tsc --watch",
     "build-prod": "gulp compress",
     "serve-prod": "node dist/index.js --prod"
   },

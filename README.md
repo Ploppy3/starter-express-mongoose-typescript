@@ -6,9 +6,13 @@ Dependencies are limited to strict minimum.
 
 ## Getting started
 
+`yarn install` || `npm install`
+
 Gulp takes care of recompiling and restarting the server on file change:
 
 In developement: `yarn serve` || `npm run serve`
+
+Or using only the TypeScript Compiler: `yarn serve-tsc` || `npm run serve-tsc`
 
 ---
 
